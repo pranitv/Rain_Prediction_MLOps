@@ -1,0 +1,34 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src\load_data.py --config=params.yaml
+    deps:
+    - path: data_given\weatherAUS.csv
+      md5: a65cf8b8719b1a65db4f361eeec18457
+      size: 14239516
+    - path: src\get_data.py
+      md5: 6a6b0db35d161d99bf99eec26ef2ea84
+      size: 666
+    - path: src\load_data.py
+      md5: 5f7a6cd6f16c4534e6b7edcf1ab0e653
+      size: 665
+    outs:
+    - path: data\raw\weatherAUS.csv
+      md5: 7686e7eaae9dfe4d07b8f5c3305c11bb
+      size: 15746468
+  split_data:
+    cmd: python src\split_data.py --config=params.yaml
+    deps:
+    - path: data\raw\weatherAUS.csv
+      md5: 7686e7eaae9dfe4d07b8f5c3305c11bb
+      size: 15746468
+    - path: src\split_data.py
+      md5: f3c80a28f08fde1cdbcc81c9ff0597c1
+      size: 1013
+    outs:
+    - path: data\processed\test_weatherAUS.csv
+      md5: f31ccf0b1c62e7b50c6f236442f54c07
+      size: 3151143
+    - path: data\processed\train_weatherAUS.csv
+      md5: 86b05f555284535c2ac8c4b0f6c40722
+      size: 12595555

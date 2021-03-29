@@ -23,3 +23,13 @@ dvc init
 dvc add data_given/weatherAUS.csv
 ```
 upload to git
+
+create get_data file
+create load_data file
+create split_data file
+
+```bash
+dvc repro
+```
+
+train and evaluate the model

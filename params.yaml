@@ -1,0 +1,37 @@
+base:
+  project: rainprediction-project
+  random_state: 47
+  target_col: RainTomorrow
+
+data_source:
+  s3_source: data_given\weatherAUS.csv
+
+load_data:
+  raw_dataset_csv: data\raw\weatherAUS.csv
+
+split_data:
+  train_path: data\processed\train_weatherAUS.csv
+  test_path: data\processed\test_weatherAUS.csv
+  test_size: 0.2
+
+estimators:
+  ElasticNet:
+    params:
+      # alpha: 0.9
+      # l1_ratio: 0.4
+      alpha: 0.88
+      l1_ratio: 0.89
+
+model_dir: saved_models
+reports:
+  params: report/params.json
+  scores: report/scores.json
+
+webapp_model_dir: prediction_Service/model/model.joblib
+
+mlflow config:
+  artifacts_dir: artifacts
+  experiment_name: ElasticNet regression
+  run name: mlops
+  registered_model_name: ElasticNetWineModel
+  remote_server_url: http://0.0.0.0.1234
