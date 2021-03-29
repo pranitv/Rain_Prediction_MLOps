@@ -22,3 +22,4 @@ dvc init
 ```bash
 dvc add data_given/weatherAUS.csv
 ```
+upload to git
